@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import CardList from './card-list';
-import pretty from "pretty";
-
 
 let container = null;
 
