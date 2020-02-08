@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import Card from './card';
+import CardUku from './card';
 
 let container = null;
 
@@ -19,7 +19,7 @@ afterEach( () => {
 it('display detail on click',() => {
   const datatest = {"id":"39","titre":"Jingle Bells","lien_partition":"http:\/\/uku.localhost\/img\/twopage.pdf","tonalite":"A","tempo":"60","del_link":"..\/img\/twopage.pdf"}
   act(() => {
-    render(<Card data={datatest}></Card>, container);
+    render(<CardUku data={datatest}></CardUku>, container);
 });
   const zeldadetail = document.querySelector('.zelda-detail')
   const detailbox = document.querySelector('.detail-box')

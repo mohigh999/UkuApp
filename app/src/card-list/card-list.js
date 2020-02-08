@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './card-list.css';
-import Card from './card/card';
+import CardUku from './card/card';
+import { Grid } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 
 export default class CardList extends Component {
   static defaultProps =  
   {
-    // url: "https://www.ukuapi.pierre-monier.com/src/select.php"
-    url : "./FakeApi/card-examples.json"
+    url: "https://www.ukuapi.pierre-monier.com/src/select.php"
   }
 
   constructor(props){
@@ -25,7 +26,6 @@ export default class CardList extends Component {
     fetch(this.props.url)
       .then( res => {
         return res.json()
-        console.log("##########")
       })
       .then( res => {
         const data = res
@@ -44,7 +44,7 @@ export default class CardList extends Component {
 
   createCards(data) {
     const cards = data.map((card, key) =>
-    <Card key={card.id} data={card}>{card.titre}</Card>
+    <CardUku key={card.id} data={card}>{card.titre}</CardUku>
   );
     return cards;
   }
@@ -53,7 +53,11 @@ export default class CardList extends Component {
 
     return (
       <div className="card-list" data-testid="cardlist" data-testnbr={ this.state.on ? this.state.nbr : 0 }>
-        { this.state.on ? this.state.cards : this.state.loader }
+        <Container maxWidth="lg">
+          <Grid container alignItems="center" spacing={6}>
+          { this.state.on ? this.state.cards : this.state.loader }
+          </Grid>
+        </Container>
       </div>
     )
 
