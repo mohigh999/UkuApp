@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load 2 card element, the title of the first card equals Jingle Bells 1`] = `"<div class=\\"card-list\\" data-testid=\\"cardlist\\" data-testnbr=\\"0\\">Wait...</div>"`;

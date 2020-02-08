@@ -1,0 +1,18 @@
+.card{
+    border: 1px solid black;
+    transition: all 1s ease-in-out;  
+}
+
+.detail-box{
+    transition: height, opacity .1s ease-in-out;  
+}
+
+.detail-out{
+    height: 0px;
+    opacity: 0; 
+}
+
+.detail-in{
+    height: 100px;
+    opacity: 1;
+}
