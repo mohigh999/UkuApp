@@ -23,10 +23,8 @@ it('Load 2 card element, the title of the first card equals Jingle Bells', async
 act(() => {
     render(<CardList></CardList>, container);
 });
-const carlist = document.querySelector("[data-testid='cardlist]");
-expect(
-  pretty(container.innerHTML)
-).toMatchSnapshot();
+const cardcontainer = document.querySelector(".MuiContainer-root");
+expect(cardcontainer).toBeDefined();
 
 
 })
