@@ -29,7 +29,7 @@ it('display detail on click',() => {
     );
   });
 
-  expect(zeldadetail.className).toMatch("zelda-detail btn-active");
+  expect(zeldadetail.className).toMatch("zelda-detail btn-primary btn-active");
   expect(detailbox.style.height).not.toBe(0);
 
 }); 

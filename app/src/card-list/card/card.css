@@ -1,8 +1,21 @@
 .card{
     transition: all 1s ease-in-out;  
+    background-color: black;
+}
+/*  */
+.btn-primary{
+    /* background-color: #E8614A !important; */
+    border: solid 1px gray !important;
+}
+
+.btn-secondary{
+    background-color: #FF5E61 !important;
+    color: white !important;
+    padding: 10px !important;
 }
 
 .detail-box{
+    padding-top: 12px;
     transition: height, opacity .1s ease-in-out;  
 }
 
@@ -14,4 +27,8 @@
 .detail-in{
     height: 100px;
     opacity: 1;
+}
+
+.card:first-of-type{
+    margin-top: 25px;
 }

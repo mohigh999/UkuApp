@@ -1,0 +1,6 @@
+.appnavigation{
+    position: fixed;
+    bottom: 0;
+    min-width: 100vw;
+    background-color: black !important;
+}

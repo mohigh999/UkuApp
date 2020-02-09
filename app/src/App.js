@@ -33,7 +33,6 @@ export default class App extends Component {
     
     this.hammer = new Hammer(app) 
     this.hammer.on("swiperight", () => {
-      console.log("PREV")
       if(this.state.current_view > 0){
         this.setState( state => {
           current_view: state.current_view--
@@ -42,7 +41,6 @@ export default class App extends Component {
       this.nav("#"+this.state.view[this.state.current_view].getAttribute("id"))
     })
     this.hammer.on("swipeleft", () => {
-      console.log("NEXT")
       if(this.state.current_view < this.state.nbr_view){
         this.setState( state => {
           current_view: state.current_view++

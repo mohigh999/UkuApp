@@ -4,6 +4,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import './app-navigation.css'
 
 export default class AppNavigation extends Component {
 
@@ -19,9 +20,9 @@ export default class AppNavigation extends Component {
           // }}
           showLabels
         >
-          <BottomNavigationAction data-testid="prev" onClick={() => { this.props.func("#card-list")}} label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction data-testid="next" onClick={() => { this.props.func("#accordeur")}} label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction onClick={() => { this.props.func("#metronome")}} label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction data-testid="prev" onClick={() => { this.props.func("#card-list")}} label="Partitions" icon={<RestoreIcon />} />
+          <BottomNavigationAction data-testid="next" onClick={() => { this.props.func("#accordeur")}} label="Accordeur" icon={<FavoriteIcon />} />
+          <BottomNavigationAction onClick={() => { this.props.func("#metronome")}} label="Métronome" icon={<LocationOnIcon />} />
         </BottomNavigation>
       </div>
     )
