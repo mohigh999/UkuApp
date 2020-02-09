@@ -19,8 +19,8 @@ export default class AppNavigation extends Component {
           // }}
           showLabels
         >
-          <BottomNavigationAction onClick={() => { this.props.func(".card-list")}} label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction onClick={() => { this.props.func(".accordeur")}} label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction data-testid="prev" onClick={() => { this.props.func(".card-list")}} label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction data-testid="next" onClick={() => { this.props.func(".accordeur")}} label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction onClick={() => { this.props.func(".metronome")}} label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>
       </div>

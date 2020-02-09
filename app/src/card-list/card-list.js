@@ -52,7 +52,7 @@ export default class CardList extends Component {
   render() {
 
     return (
-      <div className="view card-list" data-testid="cardlist" data-testnbr={ this.state.on ? this.state.nbr : 0 }>
+      <div className="view view-in card-list" data-testid="cardlist" data-testnbr={ this.state.on ? this.state.nbr : 0 }>
         <Container maxWidth="lg">
           <Grid container alignItems="center" spacing={6}>
           { this.state.on ? this.state.cards : this.state.loader }

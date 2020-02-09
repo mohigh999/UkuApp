@@ -24,18 +24,20 @@ export default class App extends Component {
   nav(target) {
 
     this.state.view.forEach(el => {
-      el.style.display = "none"
+      el.classList.remove("view-in")
+      el.classList.add("view-out")
     })
-    document.querySelector(target).style.display = "block"
+    document.querySelector(target).classList.remove("view-out")
+    document.querySelector(target).classList.add("view-in")
     
   }
 
   render() {
     return (
-      <div className="App">
-        <CardList className="test">></CardList>
-        <Accordeur className="test">></Accordeur>
-        <Metronome className="test">></Metronome>
+      <div className="App" data-testid="app">
+        <CardList>></CardList>
+        <Accordeur>></Accordeur>
+        <Metronome>></Metronome>
         <AppNavigation func={this.nav}></AppNavigation>
       </div>
     );
