@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Hammer from 'hammerjs';
 // Component
 import CardList from './card-list/card-list';
 import Accordeur from './accordeur/accordeur';
@@ -12,15 +13,45 @@ export default class App extends Component {
   constructor() {
     super()
     this.nav = this.nav.bind(this)
+    this.addHammer = this.addHammer.bind(this)
+    this.state = {
+      current_view: 0,
+    }
   }
 
   componentDidMount() {
-
+    const app = document.querySelector(".App")
+    this.addHammer(app)
     this.setState({ 
-      view: document.querySelectorAll(".view")
+      view: document.querySelectorAll(".view"),
+      nbr_view: app.childNodes.length - 2
     });
 
   }
+
+  addHammer(app) {
+    
+    this.hammer = new Hammer(app) 
+    this.hammer.on("swiperight", () => {
+      console.log("PREV")
+      if(this.state.current_view > 0){
+        this.setState( state => {
+          current_view: state.current_view--
+        })
+      }
+      this.nav("#"+this.state.view[this.state.current_view].getAttribute("id"))
+    })
+    this.hammer.on("swipeleft", () => {
+      console.log("NEXT")
+      if(this.state.current_view < this.state.nbr_view){
+        this.setState( state => {
+          current_view: state.current_view++
+        })
+      }
+      this.nav("#"+this.state.view[this.state.current_view].getAttribute("id"))
+    })
+  }
+
   nav(target) {
 
     this.state.view.forEach(el => {
@@ -35,9 +66,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="App" data-testid="app">
-        <CardList>></CardList>
-        <Accordeur>></Accordeur>
-        <Metronome>></Metronome>
+        <CardList data-nbr="0">></CardList>
+        <Accordeur data-nbr="1">></Accordeur>
+        <Metronome data-nbr="2">></Metronome>
         <AppNavigation func={this.nav}></AppNavigation>
       </div>
     );

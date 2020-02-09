@@ -56,15 +56,15 @@ it('change the view when you click on the menu or swip', async () => {
           new MouseEvent("click", { bubbles: true })
         );
     });
-    expect(childs[1].classList[2]).toEqual("view-in");
-    expect(childs[0].classList[2]).toEqual("view-out");
+    expect(childs[1].classList[1]).toEqual("view-in");
+    expect(childs[0].classList[1]).toEqual("view-out");
     act( () => {
         prevvue.dispatchEvent(
           new MouseEvent("click", { bubbles: true })
         );
     });
-    expect(childs[0].classList[2]).toEqual("view-in")
-    expect(childs[1].classList[2]).toEqual("view-out")
+    expect(childs[0].classList[1]).toEqual("view-in")
+    expect(childs[1].classList[1]).toEqual("view-out")
 })
 
 

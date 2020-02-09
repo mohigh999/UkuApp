@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Accordeur extends Component {
   render() {
     return (
-      <div className="view view-out accordeur">
+      <div id="accordeur" className="view view-out">
         Accordeur
       </div>
     )
