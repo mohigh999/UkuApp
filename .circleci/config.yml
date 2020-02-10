@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: test 
-          command: pwd && cd app && yarn install && yarn test && cd ..
+          command: pwd && cd app && yarn install && yarn testx && cd ..
       # - store_artifacts:
       #     path: test-results.xml
       #     prefix: tests
