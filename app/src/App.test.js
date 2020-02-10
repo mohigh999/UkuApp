@@ -66,9 +66,3 @@ it('change the view when you click on the menu or swip', async () => {
     expect(childs[0].classList[1]).toEqual("view-in")
     expect(childs[1].classList[1]).toEqual("view-out")
 })
-
-
-
-
-
-// }); 

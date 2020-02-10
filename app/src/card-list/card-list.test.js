@@ -27,8 +27,3 @@ expect(cardcontainer).toBeDefined();
 
 })
 
-
-
-
-
-// }); 
