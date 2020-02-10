@@ -35,6 +35,7 @@ export default class App extends Component {
     this.hammer.on("swiperight", () => {
       if(this.state.current_view > 0){
         this.setState( state => {
+          // eslint-disable-next-line
           current_view: state.current_view--
         })
       }
@@ -43,6 +44,7 @@ export default class App extends Component {
     this.hammer.on("swipeleft", () => {
       if(this.state.current_view < this.state.nbr_view){
         this.setState( state => {
+          // eslint-disable-next-line
           current_view: state.current_view++
         })
       }
