@@ -20,10 +20,21 @@ export default class CardUku extends Component {
     }
   }
 
-  handleClick = () =>{
+  fadeLabel = (delay, el) => {
+    el.style.opacity = "0"
+    setTimeout(() => {
+      el.style.opacity = "1" 
+    }, delay);
+  }
+
+  handleClick = (e) =>{
+
+    let label = e.currentTarget.children[0]
+    this.fadeLabel(200, label)
     this.setState(state => ({
       detailin : !state.detailin
     }));
+ 
   }
   render() {
     return (

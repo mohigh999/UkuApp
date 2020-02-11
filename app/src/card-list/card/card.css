@@ -17,7 +17,8 @@
 
 .detail-box{
     padding-top: 12px;
-    transition: height, opacity .1s ease-in-out;  
+    transition: all .5s cubic-bezier(0.74, 0.19, 0.26, 1.76);
+
 }
 
 .detail-out{
@@ -26,10 +27,15 @@
 }
 
 .detail-in{
+    /* top: 100px; */
     height: 100px;
     opacity: 1;
 }
 
 .card:first-of-type{
     margin-top: 25px;
+}
+
+.MuiIconButton-label{
+    transition: opacity .2s ease;
 }
