@@ -4,3 +4,12 @@
     min-width: 100vw;
     background-color: black !important;
 }
+
+.btn-active {
+    background-color: #FFC6B3 !important;
+}
+
+.btn-off {
+    background-color: transparent !important;
+
+}

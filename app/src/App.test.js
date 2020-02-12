@@ -23,7 +23,7 @@ it('render 4 element ', async () => {
     });
     const app = document.querySelector("[data-testid='app']")
     const nbr_childs = app.childNodes.length
-    expect(nbr_childs).toEqual(4);
+    expect(nbr_childs).toEqual(2);
 })
 
 it('render 3 view class element ', async () => {
@@ -31,8 +31,8 @@ it('render 3 view class element ', async () => {
     act(() => {
         render(<App></App>, container);
     });
-    const app = document.querySelector("[data-testid='app']")
-    const childs = app.childNodes
+    const appview = document.querySelector("#allview")
+    const childs = appview.childNodes
     let i = 0
     childs.forEach(el => {
         if(el.classList[0] === "view"){
@@ -47,8 +47,8 @@ it('change the view when you click on the menu or swip', async () => {
     act(() => {
         render(<App></App>, container);
     });
-    const app = document.querySelector("[data-testid='app']")
-    const childs = app.childNodes
+    const appview = document.querySelector("#allview")
+    const childs = appview.childNodes
     const nextvue = document.querySelector("[data-testid='next']")
     const prevvue = document.querySelector("[data-testid='prev']")
     act( () => {

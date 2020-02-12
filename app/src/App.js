@@ -17,6 +17,7 @@ export default class App extends Component {
     this.state = {
       current_view: 0,
       tab_view: ["#card-list", "#accordeur", "#metronome"],
+      navon: [true,false,false]
     }
 
   }
@@ -40,6 +41,38 @@ export default class App extends Component {
   addHammer(app) {
     
     this.hammer = new Hammer(app) 
+
+
+    this.hammer.on("panleft", (e) => {
+      console.log(this.state.current_view, (this.state.tab_view.length -1))
+      if(this.state.current_view === (this.state.tab_view.length -1)){
+        console.log(e.deltaX, (window.innerWidth/2))
+        if(Math.abs(e.deltaX) < (window.innerWidth/2)){
+          document.querySelector("#allview").style.transform = "translateX("+e.deltaX+"px)";
+        }    
+      }else{
+        document.querySelector("#allview").style.transform = "translateX("+e.deltaX+"px)";
+      }
+    })
+
+
+    this.hammer.on("panend", (e) => {
+      console.log(e)
+      let current = "#"+this.state.view[this.state.current_view].getAttribute("id")
+      // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+      // Droite
+      console.log(Math.abs(e.deltaX), )
+      if(Math.abs(e.deltaX) > (window.innerWidth/2) && this.state.current_view < (this.state.tab_view.length -1) && e.deltaX < 0){
+        
+        let target = "#"+this.state.view[this.state.current_view+1].getAttribute("id")
+        this.nav(target)
+
+      }
+      document.querySelector("#allview").style.transform = "translateX(0px)";
+    })
+
+
+    
     this.hammer.on("swiperight", () => {
       if(this.state.current_view > 0){
         this.setState( state => {
@@ -67,20 +100,25 @@ export default class App extends Component {
 // Nav
   nav(target) {
 
+    let active_nav_item = this.state.tab_view.indexOf(target)
+
     this.state.view.forEach(el => {
       el.classList.remove("view-in")
       el.classList.add("view-out")
     })
-    
+    this.setState({
+      current_view: this.state.tab_view.indexOf(target)
+    })
     document.querySelector(target).classList.remove("view-out")
     document.querySelector(target).classList.add("view-in")
     document.querySelector(target).style.transform = "translateX(0px)";
     this.viewOutDisplayer(this.state.tab_view.indexOf(target))
+    this.changeBottomNaviationIndice(active_nav_item)
 
-  }
+  } 
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-// VIewOutDisplayer
+// viewOutDisplayer
   viewOutDisplayer(target) {
 
     let viewout = document.querySelectorAll(".view-out")
@@ -109,15 +147,35 @@ export default class App extends Component {
   }
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+// changeBottomNaviationIndice
+  changeBottomNaviationIndice(navindice){
+
+    let newtab = ['bru']
+    this.state.navon.forEach((el, i) => {
+      if(i !== navindice){
+        newtab[i] = false
+      }else{
+        newtab[i] = true
+      }
+      // if()
+    });
+    this.setState({navon: newtab})
+
+
+  }
+// °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+// °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // Render, old, false
   render() {
 
     return (
       <div className="App" data-testid="app">
-        <CardList data-nbr="0">></CardList>
-        <Accordeur data-nbr="1">></Accordeur>
-        <Metronome data-nbr="2">></Metronome>
-        <AppNavigation func={this.nav}></AppNavigation>
+        <div id="allview">
+          <CardList data-nbr="0">></CardList>
+          <Accordeur data-nbr="1">></Accordeur>
+          <Metronome data-nbr="2">></Metronome>
+        </div>
+        <AppNavigation navon={this.state.navon} func={this.nav}></AppNavigation>
       </div>
     );
 
