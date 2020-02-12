@@ -70,7 +70,7 @@ export default class App extends Component {
       document.querySelector("#allview").classList.remove("no-transi")
       // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
       // Droite
-      if(Math.abs(e.deltaX) > (window.innerWidth/2) && this.state.current_view < (this.state.tab_view.length -1) && e.deltaX < 0){
+      if(Math.abs(e.deltaX) > (window.innerWidth/3) && this.state.current_view < (this.state.tab_view.length -1) && e.deltaX < 0){
         console.log("DROITE IF")
         let target = "#"+this.state.view[this.state.current_view+1].getAttribute("id")
         this.nav(target)
@@ -85,7 +85,7 @@ export default class App extends Component {
       }
       // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
       // Gauche
-      if(Math.abs(e.deltaX) > (window.innerWidth/2) && this.state.current_view !== 0 && e.deltaX > 0){
+      if(Math.abs(e.deltaX) > (window.innerWidth/3) && this.state.current_view !== 0 && e.deltaX > 0){
         console.log("GAUCHE IF")
         let target = "#"+this.state.view[this.state.current_view-1].getAttribute("id")
         this.nav(target)
